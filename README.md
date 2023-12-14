@@ -16,4 +16,10 @@ The react-router-dom wasn't added in the package.json by default, so copied it f
 
 ### Setting up the Main app.
 
-1:36:12
+We add a template code from getbootstrap.com to create the Main page. A route is added to the App.tsx page, but the component is stuck to all the pages. For that the Navbar and menubar are placed in a wrapper component for Admin. 
+Making a React component of the type PropsWithChildren makes it usable as a containing element like `<element></element>` instead of `<element />` and it can also contain other elements. 
+
+Since we are using React v18, exact keyword is no longer required in routes. Routes are by default made exact so components should not be sticking on the page of another component. Move components into Admin. 
+
+### Products CRUD
+1:42:08
