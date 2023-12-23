@@ -22,4 +22,6 @@ Making a React component of the type PropsWithChildren makes it usable as a cont
 Since we are using React v18, exact keyword is no longer required in routes. Routes are by default made exact so components should not be sticking on the page of another component. Move components into Admin. 
 
 ### Products CRUD
-1:42:08
+UseEffect is used in React to load some effect in the component. It takes 2 parameters: a function, that creates the effect and an array of dependencies. The dependecies are used only once in the useEffect function. If a variable is passed in as a dependency, the effect is called everytime the variable value changes.
+
+`useEffect` is a React Hook that lets you synchronize a component with an external system. It accepts two arguments: a callback function and an optional dependency array. The second argument is optional. `useEffect(<function>, <dependency>)`. Some examples of side effects are: fetching data, directly updating the DOM, and timers. You can use useEffect to perform side effects in your components. 
