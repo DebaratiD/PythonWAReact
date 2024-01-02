@@ -1,17 +1,31 @@
-import React, { SyntheticEvent, useState } from 'react'
+import React, { PropsWithRef, SyntheticEvent, useEffect, useState } from 'react'
 import { Navigate } from 'react-router-dom'
 import Wrapper from './Wrapper'
+import { Product } from '../interfaces/product'
 
-const ProductsCreate = () => {
+const ProductsEdit = (props:PropsWithRef<any>) => {
   const [title, setTitle] = useState('')
   const [image, setImage] = useState('')
   const [redirect, setRedirect] = useState(false)
 
+  useEffect(()=>{
+    (
+      async ()=>{
+        const res = await fetch(`ttp://localhost:8000/api/products/${props.match.params.id}`)
+        const product:Product = await res.json()
+
+        setTitle(product.title)
+        setImage(product.image)
+
+      }
+    )()
+  },[])
+
   const submit = async (e:SyntheticEvent)=>{
     e.preventDefault()
     
-    await fetch('http://localhost:8000/api/products',{
-      method:'POST',
+    await fetch(`http://localhost:8000/api/products/${props.match.params.id}`,{
+      method:'PUT',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({title, image})
     })
@@ -28,12 +42,14 @@ const ProductsCreate = () => {
         <div className="form-group">
           <label>Title</label>
           <input type='text' className="form-control" name="title" 
+          defaultValue={title}
           onChange={e=>setTitle(e.target.value)}/>
         </div>
 
         <div className="form-group">
           <label>Image</label>
-          <input type='text' className="form-control" name="image" 
+          <input type='text' className="form-control" name="image"
+          defaultValue={image} 
           onChange={e=>setImage(e.target.value)}/>
         </div>
         <button className="btn btn-outline-secondary">Save</button>
@@ -42,4 +58,4 @@ const ProductsCreate = () => {
   )
 }
 
-export default ProductsCreate
+export default ProductsEdit

@@ -25,3 +25,10 @@ Since we are using React v18, exact keyword is no longer required in routes. Rou
 UseEffect is used in React to load some effect in the component. It takes 2 parameters: a function, that creates the effect and an array of dependencies. The dependecies are used only once in the useEffect function. If a variable is passed in as a dependency, the effect is called everytime the variable value changes.
 
 `useEffect` is a React Hook that lets you synchronize a component with an external system. It accepts two arguments: a callback function and an optional dependency array. The second argument is optional. `useEffect(<function>, <dependency>)`. Some examples of side effects are: fetching data, directly updating the DOM, and timers. You can use useEffect to perform side effects in your components. 
+
+
+### Building the Product Create page
+
+When building the form to create a new product, the page refreshes by default upon clicking submit. To prevent this, use a SyntheticEvent which allows preventing the default refreshing of the page. 
+
+A wrapper is created that allows loading different components on the home page while keeping the navigation bar and side bars intact.
